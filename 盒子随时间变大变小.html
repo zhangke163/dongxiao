@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>变大</title>
+<script src="js/function.js"></script>
+</head>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		margin: 0 auto;
+		background: red;
+	}
+</style>
+<body>
+	<div class="box"></div>
+</body>
+<script>
+	var box=$(".box")[0];
+	var a=200;
+	var step=-1;
+	// function time(){
+	// 	a+=10;
+	// 	box.style.width=a+"px";
+	// 	box.style.height=a+"px";
+	// 	if(a>=400){
+	// 		clearInterval(t);
+	// 		function time1(){
+	// 			a-=10;
+	// 			box.style.width=a+"px";
+	// 			box.style.height=a+"px";
+	// 			if(a<=200){
+	// 				clearInterval(t1);
+	// 				t=setInterval(time,200);
+	// 			}
+	// 		}
+	// 		var t1=setInterval(time1,200)
+	// 	}
+	// }
+	// var t=setInterval(time,200);
+
+
+
+	function time(){
+		if(a>=400){
+			step*=-1;
+		}
+		if(a<=200){
+			step*=-1;
+		}
+		a+=step;
+		box.style.width=a+"px";
+		box.style.height=a+"px";
+	
+	}
+	var t=setInterval(time,10);
+</script>
+</html>

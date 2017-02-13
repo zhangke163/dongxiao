@@ -1,0 +1,172 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>dom</title>
+	<style>
+	#box1{
+		width: 200px;
+		height: 200px;
+		margin-left:20px;
+		text-align: center;
+		line-height: 200px;
+		color: red;
+		float: left;
+		font-size: 60px;
+		border-radius: 50%;
+		border:3px solid #dbdbdb;
+		box-shadow: 10px 10px 50px rgba(176,175,175,0.5);
+	}
+	#box{
+		width: 200px;
+		height: 200px;
+		text-align: center;
+		line-height: 200px;
+		color: red;
+		float: left;
+		margin-left: 20px;
+		font-size: 60px;
+		border-radius: 50%;
+		border:3px solid #dbdbdb;
+		box-shadow: 10px 10px 50px rgba(176,175,175,0.5);
+	}#box4{
+		width: 200px;
+		height: 200px;
+		text-align: center;
+		line-height: 200px;
+		color: red;
+		float: left;
+		margin-left: 300px;
+		font-size: 60px;
+		border-radius: 50%;
+		border:3px solid #dbdbdb;
+		box-shadow: 10px 10px 50px rgba(176,175,175,0.5);
+	}#box3{
+		width: 200px;
+		height: 200px;
+		text-align: center;
+		line-height: 200px;
+		color: red;
+		margin-left: 20px;
+		font-size: 40px;
+		border-radius: 50%;
+		border:3px solid #dbdbdb;
+		box-shadow: 10px 10px 50px rgba(176,175,175,0.5);
+	}
+	#box2{
+		width: 10px;
+		height: 200px;
+		text-align: center;
+		line-height: 200px;
+		color: red;
+		float: left;
+		margin-left: 20px;
+		font-size: 60px;
+	}
+	</style>
+</head>
+<body>
+
+<!-- <h1>这是首页</h1>
+<input type="button" value="打开百度" id="opens"> -->
+<span id="box4">0</span>
+<span id="box2">:</span>
+<span id="box1">0</span>
+<span id="box2">:</span>
+<span id="box">0</span>
+<!-- <span id="box3">60</span> -->
+
+</body>
+</html>
+<script>
+	var b=1;
+	var a=1;
+	var c=1;
+	// var box=document.getElementById("box");
+	// var t=window.setInterval(
+	// 	function()
+	// 	{
+	// 		if(b>=60)
+	// 		{
+	// 			b=0;
+	// 			var box1=document.getElementById("box1");
+	// 			if(a>=60){
+	// 				a=0;
+	// 				var box4=document.getElementById("box4");
+	// 				if(c>=24){
+	// 					c=0;
+	// 				}
+	// 				box4.innerHTML=c;
+	// 				c++;
+	// 			}
+	// 			box1.innerHTML=a;
+	// 			a++;
+	// 		}
+	// 	box.innerHTML=b;
+	// 	b++;
+	// 	},1000);
+
+
+
+	var box=document.getElementById("box");
+	var t1=window.setInterval(function(){
+		if(a>=60){
+			a=0;
+		}
+		box.innerHTML=a;
+		a++;
+	},1000);
+
+	var box1=document.getElementById("box1");
+	var t2=window.setInterval(function(){
+		if(b>=60){
+			b=0;
+		}
+		box1.innerHTML=b;
+		b++;
+	},60000);
+
+	var box4=document.getElementById("box4");
+	var t3=window.setInterval(function(){
+		if(c>=12){
+			c=0;
+		}
+		box4.innerHTML=c;
+		c++;
+	},3600000);
+
+
+
+
+	var box3=document.getElementById("box3");
+	var b=59;
+	function qingchu (){
+	var t5=setTimeout(function(){
+		box3.innerHTML=b;
+		b--;
+		if(b>=0){
+			qingchu();
+		}else{
+			clearTimeout(t5);
+			}
+		},1000)
+	}
+qingchu();
+
+// 自动阅读
+	// var t2=setInterval(function(){
+	// 	window.scrollBy(0,300)
+	// },1000)
+	// var flag=1;
+	// document.body.onclick=function(){
+	// 	if(flag==1){
+	// 		clearInterval(t2);
+	// 		flag=2;
+	// 	}else if(flag==2){
+	// 		t2=setInterval(function(){
+	// 	window.scrollBy(0,300)
+	// },1000)
+	// 		flag=1;
+	// 	}
+	// }
+</script>

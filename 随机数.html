@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>suiji</title>
+</head>
+<body>
+<script>
+function suiji(x,y)
+{
+	var arr=new Array(26);
+		var b=x;
+	for(var i=0;i<26;i++)
+	{
+		var e=String.fromCharCode(b);
+		arr[i]=e;
+		b++;
+	}
+	var d="";
+	var arr1=new Array(y);
+	for(var j=0;j<y;j++)
+	{
+		var c=arr[parseInt(Math.random()*arr.length)];
+				arr1[j]=c;
+				for(var q=0;q<j;q++)
+					{
+						if(arr1[q]==c){//出来的有时一样
+							j--;
+						}
+							
+					}
+	}
+	alert("他们分别是"+arr1);
+};
+var k=prompt("您要看大写还是小写，请输入首字母","");
+if(k!="a"&&k!="A"){
+	alert("您的输入有误,请重新输入！");
+}
+else{
+	if(k=="a")
+		var n=97;
+	else
+		n=65;
+	var l=prompt("您要看几个数","");
+	if(l>26||l<=0)
+	{
+		alert("对不起，您超出了范围！");
+	}
+	else{
+		suiji(n,l);
+	}
+}
+
+
+</script>
+</body>
+</html>

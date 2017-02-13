@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<script src="js/function.js"></script>
+	<title>Document</title>
+	<style>
+	body{
+		height: 3000px;
+	}
+	.ding{
+		width: 100%;
+		transition:all 0.5s;
+		height: 60px;
+		background: red;
+		position: fixed;
+		top: -60px;
+	}
+</style>
+</head>
+<body>
+	<div class="ding"></div>
+</body>
+<script>
+var ding=$(".ding")[0];
+var kai=true;
+var guan=true;
+window.onscroll=function(){
+	var to=document.documentElement.scrollTop?document.documentElement.scrollTop:document.body.scrollTop;
+	if(to>=400){
+		if(kai){
+			ding.style.top=0;
+			kai=false;
+			guan=true;
+		}
+	}else{
+		if(guan){
+			ding.style.top="-60px";
+			kai=true;
+			guan=false;
+		}
+	}
+}
+</script>
+</html>

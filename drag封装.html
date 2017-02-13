@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		position: fixed;
+		left: 0;
+		top: 0;
+		background: yellowgreen;
+	}
+</style>
+<body>
+	<div class="box"></div>
+</body>
+<script>
+function Drag(obj){
+	this.obj=obj;
+	this.cw=document.documentElement.clientWidth;
+	this.ch=document.documentElement.clientHeight;
+	this.ow=this.obj.offsetWidth;
+	this.oh=this.obj.offsetHeight;
+	this.ox=0;
+	this.oy=0;
+	this.cx=0;
+	this.cy=0;
+}
+Drag.prototype={
+	drag:function(){
+		this.resize();
+		this.down();
+	},
+	down:function(){
+		var that=this;
+		this.obj.onmousedown=function(e){
+			var e=e||window.event;
+			that.ox=e.offsetX;
+			that.oy=e.offsetY;
+			that.move();
+			that.up();
+		}
+	},
+	move:function(){
+		var that=this;
+		document.onmousemove=function(e){
+			var e=e||window.event;
+			that.cx=e.clientX;
+			that.cy=e.clientY;
+			var x=that.cx-that.ox;
+			var y=that.cy-that.oy;
+			if(x<0){x=0;};
+			if(y<0){y=0;};
+			if(x>that.cw-that.ow){x=that.cw-that.ow};
+			if(y>that.ch-that.oh){y=that.ch-that.oh};
+			that.obj.style.left=x+"px";
+			that.obj.style.top=y+"px";
+		}
+	},
+	up:function(){
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+		
+	},
+	resize:function(){
+		var that=this;
+		window.onresize=function(){
+			that.cw=document.documentElement.clientWidth;
+			that.ch=document.documentElement.clientHeight;
+			var ol=that.obj.offsetLeft;
+			var ot=that.obj.offsetTop;
+			if(ol>that.cw-that.ow){that.obj.style.left=(that.cw-that.ow)+"px";};
+			if(ot>that.ch-that.oh){that.obj.style.top=(that.ch-that.oh)+"px";};
+		}
+	}
+}
+var box=$(".box")[0];
+var newobj=new Drag(box);
+newobj.drag();
+</script>

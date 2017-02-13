@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<script src="js/animate.js"></script>
+</head>
+<style>
+	.box{
+		width: 180px;
+		height: 180px;
+		background: yellowgreen;
+		border-radius: 50%;
+		margin:30px auto;
+		padding: 10px;
+	}
+	.xbox{
+		width: 180px;
+		height: 180px;
+		background: blue;
+		cursor: pointer;
+		border-radius: 50%;
+		opacity: 0.5;
+		overflow: hidden;
+	}
+	.top{
+		width:100%;
+		height: 110px;
+		background: blue;
+		position: relative;
+	}
+	.yan1,.yan2{
+		width: 25px;
+		height: 25px;
+		overflow: hidden;
+		border-radius: 50%;
+		background: #5784ab;
+		position: absolute;
+		bottom: 30px;
+	}
+	.yan1{
+		left: 30px;
+	}
+	.yan2{
+		right: 30px;
+	}
+	.qiu{
+		width: 10px;
+		transition:all 0.5s;
+		height: 10px;
+		border-radius: 50%;
+		background: #fff;
+		margin: 10px 0 0;
+	}
+	.bottom{
+		width:100%;
+		height: 70px;
+	}
+	.zui{
+		width: 40px;
+		height: 40px;
+		border-radius: 50%;
+		background: #5784ab;
+		transition:all 0.5s;
+		margin:0 auto;
+	}
+</style>
+<body>
+	<div class="box">
+		<div class="xbox">
+			<div class="top">
+				<div class="yan1">
+					<div class="qiu"></div>
+				</div>
+				<div class="yan2">
+					<div class="qiu"></div>
+				</div>
+			</div>
+			<div class="bottom">
+				<div class="zui"></div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
+<script>
+	var box=$(".box")[0];
+	var qiu=$(".qiu");
+	var zui=$(".zui")[0];
+	var yan1=$(".yan1")[0];
+	var yan2=$(".yan2")[0];
+	box.onmouseover=function(){
+		qiu[0].style.marginLeft="15px";
+		qiu[1].style.marginLeft="15px";
+		zui.style.width="80px";
+		zui.style.height="70px";
+		zui.style.marginTop="-35px";
+	}
+	box.onmouseout=function(){
+		qiu[0].style.marginLeft="";
+		qiu[1].style.marginLeft="";
+		zui.style.width="40px";
+		zui.style.height="40px";
+		zui.style.marginTop=0;
+	}
+	var t=setInterval(move,2000);
+	function move(){
+		animate(yan1,{height:0},200,function(){
+			animate(yan1,{height:25},200);
+		})
+		animate(yan2,{height:0},200,function(){
+			animate(yan2,{height:25},200);
+		})
+	}
+</script>

@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+	<title>index</title>
+</head>
+<style>
+table,th,td{
+	border:1px solid red;
+}
+table{
+	margin: 50px auto;
+}
+th{
+	width: 200px;
+	height: 40px;
+	text-align: center;
+	cursor: pointer;
+}
+td{
+	width: 200px;
+	height: 40px;
+	text-align: center;
+}
+caption{
+	font-size: 24px;
+	font-weight: bold;
+}
+.del{
+	cursor: pointer;
+}
+.del:hover{
+	text-decoration: underline;
+}
+#add:hover{
+	font-size: 26px;
+}
+</style>
+<body>
+	<table>
+		<caption>WUIW1603名单</caption>
+		<thead>
+			<tr>
+				<th>姓名</th>
+				<th>性别</th>
+				<th>年龄</th>
+				<th>电话</th>
+				<th id="add">添加</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>霍博洋</td>
+				<td>男</td>
+				<td>18</td>
+				<td>185473689268</td>
+				<td class="del">删除</td>
+			</tr>
+			<tr>
+				<td>刘俊杰</td>
+				<td>男</td>
+				<td>18</td>
+				<td>18547368323</td>
+				<td class="del">删除</td>
+			</tr>
+			<tr>
+				<td>牛冰飞</td>
+				<td>男</td>
+				<td>18</td>
+				<td>1854734543</td>
+				<td class="del">删除</td>
+			</tr>
+			<tr>
+				<td>胡勇</td>
+				<td>男</td>
+				<td>18</td>
+				<td>1854734543</td>
+				<td class="del">删除</td>
+			</tr>
+		</tbody>
+	</table>
+</body>
+<script>
+var tab=$("table")[0];
+var tbody=$("tbody")[0];
+tab.ondblclick=function(e){
+	var e=e||window.event;
+	var obj=e.srcElement||e.target;
+	if(obj.nodeName=="TH" || obj.className=="del"){
+		return false;
+	}else{
+		var a=document.createElement("input");
+		a.style.border=0;
+		var val=obj.innerHTML;
+		obj.innerHTML="";
+		obj.appendChild(a);
+		a.focus();
+		a.value=val;
+		a.onblur=function(){
+		obj.innerHTML=a.value;
+		// removeChild(a);
+		}
+	}
+}
+
+$("#add").onclick=function(){
+	var tr=document.createElement("tr");
+	for (var i = 0; i < 5; i++) {
+		if(i==4){
+			var td=document.createElement("td");
+			td.innerHTML="删除";
+			td.className="del";
+			tr.appendChild(td);
+		}else{
+			var td=document.createElement("td");
+			tr.appendChild(td);
+		}
+		
+	}
+	tbody.appendChild(tr);
+}
+tab.onclick=function(e){
+	var e=e||window.event;
+	var obj=e.srcElement||e.target;
+	if(obj.className=="del"){
+		var parent=obj.parentNode;
+		tbody.removeChild(parent);
+	}
+};
+</script>
+</html>

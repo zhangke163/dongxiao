@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<script src="js/function.js"></script>
+</head>
+<style>
+	.box{
+		width: 100px;
+		height: 100px;
+		margin: 50px auto;
+		background: red;
+	}
+</style>
+<body>
+	<div class="box"></div>
+</body>
+</html>
+<script>
+	var box=$(".box")[0];
+	var w=100;
+	mouseWheel(box,function(){
+		w+=10;
+		box.style.width=w+"px";
+		box.style.height=w+"px";
+	},function(){
+		w-=10;
+		if(w<0){w=0}
+		box.style.width=w+"px";
+		box.style.height=w+"px";
+	})
+</script>

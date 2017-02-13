@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>zuoye</title>
+</head>
+<body>
+	<script>
+		function biaoge(hang,lie)
+		{
+			for(var i=1;i<=hang;i++)
+			{
+				tab+="<tr>";
+				li(lie);
+				function li(c)
+		{
+			for(var j=1;j<=c;j++)
+				{
+					if(j%2==1&&i%2==0)
+						var color="red";
+					else if(j%2==0&&i%2==1)
+						color="yellow";
+					else color="pink";
+					tab+="<td bgcolor="+color+">11111</td>";
+				};
+			return tab;
+		};
+				tab+="</tr>";
+			};
+			return tab;
+		};
+	var a=parseInt(prompt("请输入行",""));
+	var b=parseInt(prompt("请输入列",""));
+	if(!a&&!b)
+		{
+			alert("亲，您输入的不是数字哦！");
+		}
+	else
+	{
+		var tab="<table border=1>";
+			biaoge(a,b);
+			tab+="</table>";
+			document.write(tab);
+	}
+	</script>
+</body>
+</html>

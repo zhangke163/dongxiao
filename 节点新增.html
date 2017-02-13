@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>index</title>
+<script src="js/function.js"></script>
+</head>
+<style>
+	.box{
+		margin: 10px auto;
+		width: 600px;
+		height: 500px;
+		background: yellowgreen;
+	}
+	.copy{
+		float: left;
+		width: 50px;
+		height: 50px;
+		background: red;
+		overflow: hidden;
+		cursor: pointer;
+	}
+	.anniu{
+		width: 100px;
+		height: 50px;
+		background: green;
+		color: #fff;
+		text-align: center;
+		line-height: 50px;
+	}
+</style>
+<body>
+	<div class="anniu">按钮</div>
+	<div class="box">
+		<div class="copy"></div>
+	</div>
+</body>
+<script>
+	var anniu=$(".anniu")[0];
+	var box=$(".copy")[0];
+	anniu.onclick=function(){
+		var t=box.cloneNode();
+		insertAfter(t,box);
+	}
+</script>
+</html>

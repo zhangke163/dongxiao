@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>index</title>
+</head>
+<style>
+	.box{
+		width: 400px;
+		height: 600px;
+		margin:0 auto;
+		background: yellowgreen;
+	}
+	span{
+		color: red;
+	}
+</style>
+<body>
+	<div class="box">
+		<form action="1.html" method="post" name="biaodan">
+			账&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" name="zhanghao"><span></span><br><br>
+			密&nbsp;&nbsp;&nbsp;&nbsp;码：<input type="password" name="mima"><span></span><br><br>
+			确认密码:<input type="password" name="qrmima"><span></span><br><br>
+			学&nbsp;&nbsp;&nbsp;&nbsp;号：<input type="text" name="xuehao"><span></span><br><br>
+			姓&nbsp;&nbsp;&nbsp;&nbsp;名：<input type="text" name="xingming"><span></span><br><br>
+			性&nbsp;&nbsp;&nbsp;&nbsp;别：<input type="radio" name="sex">男 <input type="radio" name="sex">女<span></span><br><br>
+			<input type="submit" name="tijiao">
+			<input type="reset" name="chongzhi">
+		</form>
+	</div>
+</body>
+<script>
+	var biaodan=document.biaodan;
+	var zhanghao=biaodan.zhanghao;
+	var mima=biaodan.mima;
+	var querenmima=biaodan.qrmima;
+	var xuehao=biaodan.xuehao;
+	var xingming=biaodan.xingming;
+	var sex=biaodan.sex;
+	var span=document.getElementsByTagName("span");
+	biaodan.onsubmit=function(){
+		if(zhanghao.value==""){
+			zhanghao.style.background="pink";
+			span[0].innerHTML="请输入您的账号！"
+			return false;
+		}
+		if(mima.value==""){
+			mima.style.background="pink";
+			span[1].innerHTML="请输入您的密码"
+			return false;
+		}
+		if(querenmima.value==""){
+			querenmima.style.background="pink";
+			span[2].innerHTML="请确认您的密码";
+			return false;
+		}
+		if(querenmima.value!=mima.value){
+			querenmima.style.background="pink";
+			span[2].innerHTML="两次密码不一样";
+			querenmima.value="";
+			querenmima.focus();
+			return false;
+		}
+		if(xuehao.value==""){
+			xuehao.style.background="pink";
+			span[3].innerHTML="请输入您的学号"
+			return false;
+		}
+		if(xingming.value==""){
+			xingming.style.background="pink";
+			span[4].innerHTML="请输入您的姓名"
+			return false;
+		}
+		if(sex[0].checked==false&&sex[1].checked==false){
+			span[5].innerHTML="请选择您的性别";
+			return false;
+		}
+	}
+	zhanghao.onkeypress=function(){
+		var val=zhanghao.value;
+		val=val.replace(/^\s*|\s*$/g,"");
+		if(val==""){
+			span[0].innerHTML="";
+		}else{
+			if(val.length<5){
+				span[0].innerHTML="长度不能小于5";
+			}else if(val.length>15){
+				span[0].innerHTML="长度不能大于15";
+			}else{
+				span[0].innerHTML="";
+			}
+		}
+		
+	}
+	zhanghao.onfocus=function(){
+		zhanghao.style.background="";
+			span[0].innerHTML=""
+	}
+	mima.onfocus=function(){
+		mima.style.background="";
+			span[1].innerHTML="";
+	}
+	querenmima.onfocus=function(){
+		querenmima.style.background="";
+			span[2].innerHTML="";
+	}
+	xuehao.onfocus=function(){
+		xuehao.style.background="";
+			span[3].innerHTML="";
+	}
+	xingming.onfocus=function(){
+		xingming.style.background="";
+			span[4].innerHTML="";
+	}
+</script>
+</html>

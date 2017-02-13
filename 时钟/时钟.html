@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>时钟</title>
+<script src="../js/function.js"></script>
+</head>
+<style>
+.bj{
+	width: 800px;
+	height: 800px;
+	background: url(表盘.jpg);
+	position: relative;
+	margin: 0 auto;
+}
+.shizheng{
+	width: 480px;
+	position: absolute;
+	height: 480px;
+	/*border:1px solid red;*/
+	left: 160px;
+	transition:all 1s linear;
+	top: 160px;
+}
+.shizheng>img{
+	margin-left: 225px;
+	margin-top: 225px;
+}
+.fengzheng{
+	width: 480px;
+	position: absolute;
+	height: 480px;
+	/*border:1px solid red;*/
+	left: 160px;
+	transition:all 1s linear;
+	top: 160px;
+}
+.fengzheng>img{
+	margin-top: 195px;
+	margin-left: 35px;
+}
+.miaozheng{
+	width: 480px;
+	position: absolute;
+	height: 480px;
+	left: 160px;
+	top: 160px;
+	/*border:1px solid red;*/
+}
+.miao{
+	width:30px;
+	height: 30px;
+	border-radius: 50%;
+	background: yellowgreen;
+	margin-left: 120px;
+	margin-top: 120px;
+}
+.zhong{
+	width: 60px;
+	z-index: 10;
+	height: 60px;
+	position: absolute;
+	left: 371px;
+	top: 373px;
+}
+</style>
+<body>
+<div class="bj">
+	<div class="shizheng">
+		<img src="zheng1.png" alt="">
+	</div>
+	<div class="fengzheng">
+		<img src="zheng2.png" alt="">
+	</div>
+	<div class="miaozheng">
+		<div class="miao"></div>
+	</div>
+	<div class="zhong"><img src="zhong.png" alt=""></div>
+</div>
+</body>
+<script>
+
+var shi=$(".shizheng")[0];
+var feng=$(".fengzheng")[0];
+var miao=$(".miaozheng")[0];
+var a=6;
+var b=0.1;
+var c=0.1/12;
+window.onload=function(){
+	function zhuan(){
+		miao.style.transform="rotate("+a+"deg)";
+		feng.style.transform="rotate("+b+"deg)";
+		shi.style.transform="rotate("+c+"deg)";
+		a+=6;
+		b+=0.1;
+		c+=0.1/12;
+	}
+	var t=setInterval(zhuan,1000);
+}
+
+</script>
+</html>

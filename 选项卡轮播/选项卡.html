@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<title>图片轮播</title>
+<link rel="stylesheet" href="../css/public.css">
+<style>
+.tupianbox{
+	width: 480px;
+	height:820px;
+	margin: 0 auto;
+}
+.wenzi{
+	width: 100%;
+	height: 50px;
+}
+.wenzi>li{
+	float: left;
+	width: 160px;
+	cursor: pointer;
+	height: 100%;
+	color: #fff;
+	text-align: center;
+	line-height: 50px;
+	background: #666;
+	transition:all 0.5s;
+}
+.wenzi>li:hover{
+	background: yellowgreen;
+}
+.tupian{
+	width: 480px;
+	height: 720px;
+}
+.tupian>li{
+	display: none;
+}
+</style>
+</head>
+<body>
+	<div class="tupianbox">
+		<ul class="wenzi">
+			<li>图片一</li>
+			<li>图片二</li>
+			<li>图片三</li>
+		</ul>
+		<ul class="tupian">
+			<li style="display:block"><img src="1.jpg" alt=""></li>
+			<li><img src="2.jpg" alt=""></li>
+			<li><img src="3.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+<script src="../js/function.js"></script>
+<script>
+	var wen=$("li",$(".wenzi")[0]);
+	var tu=$("li",$(".tupian")[0]);
+	for (var i in wen) {
+		wen[i].aa=i;
+		wen[i].onmouseover=function(){
+			for (var j = 0; j < tu.length; j++) {
+				tu[j].style.display="none";
+			};
+			tu[this.aa].style.display="block";
+		}
+	};
+</script>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<script src="js/function.js"></script>
+</head>
+<style>
+	.box{
+		width: 400px;
+		height: 300px;
+		border:1px solid red;
+	}
+</style>
+<body>
+	<textarea name="" id="wenben" cols="30" rows="10"></textarea>
+	<div class="box"></div>
+	<form action="1.php" name="biaodan">
+		身份证号：<input type="text" name="shenfeng"><span></span><br>
+		<input type="submit">
+	</form>
+</body>
+<script>
+	var biaodan=document.biaodan;
+	var shenfeng=biaodan.shenfeng;
+	var span=$("span")[0];
+	var box=$("#wenben");
+	var box1=$(".box")[0];
+	var web="html://www.'images\/1.jpg'bai'images\/1.jpg'du.com";
+shenfeng.onblur=function(){
+	var reg=/^(\d){6}(\d{4})(\d{2})(\d{2})(\d{3})\w$/;
+	var ha=reg.exec(shenfeng.value);
+	if(ha){
+		alert("出生日期："+ha[2]+"年"+ha[3]+"月"+ha[4]+"日")
+	}else{
+		alert("您的输入有误")
+	}
+};
+box.onkeyup=function(){
+	var reg1=/(傻逼)/;
+	var wenzi=box.value;
+	box1.innerText=wenzi.replace(reg1,function(){
+		var arr=[];
+		for (var i = 0; i < wenzi.length; i++) {
+			arr[i]="*";
+		};
+		return arr.join([""]);
+	});
+}
+
+</script>
+</html>

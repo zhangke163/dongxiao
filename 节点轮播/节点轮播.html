@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>节点轮播</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/function.js"></script>
+<script src="../js/animate.js"></script>
+</head>
+<style>
+	.box{
+		width: 3600px;
+		height: 637px;
+		position: relative;
+	}
+	.imgbox{
+		width: 4500px;
+		height: 100%;
+		position: absolute;
+		left: 0;
+	}
+	.imgbox>li{
+		width: 20%;
+		height: 100%;
+		float: left;
+	}
+	.left,.right{
+		width: 50px;
+		height: 100px;
+		display: none;
+		position: absolute;
+		top: 267px;
+		transition:all 0.3s;
+		line-height: 100px;
+		background: #000;
+		opacity: 0.2;
+		text-align: center;
+		font-size: 50px;
+		font-weight: bold;
+		font-family: "宋体";
+		color: #fff;
+		cursor: pointer;
+	}
+	.left{
+		left: 0;
+	}
+	.right{
+		right: 0;
+	}
+	.left:hover{
+		opacity: 0.5;
+	}
+	.right:hover{
+		opacity: 0.5;
+	}
+</style>
+<body>
+	<div class="box">
+		<ul class="imgbox">
+			<li><img src="images/01.jpg" alt=""></li>
+			<li><img src="images/02.jpg" alt=""></li>
+			<li><img src="images/03.jpg" alt=""></li>
+			<li><img src="images/04.jpg" alt=""></li>
+			<li><img src="images/05.jpg" alt=""></li>
+		</ul>
+		<div class="left">&lt;</div>
+		<div class="right">&gt;</div>
+	</div>
+</body>
+<script>
+	var box=$(".box")[0];
+	var imgbox=$(".imgbox")[0];
+	var left=$(".left")[0];
+	var right=$(".right")[0];
+	var w=900;
+	var flag=true;
+	var t=setInterval(move,1500);
+	function move(){
+		animate(imgbox,{left:-w},500,function(){
+			var first=getFirst(imgbox);
+			imgbox.appendChild(first);
+			imgbox.style.left=0;
+			flag=true;
+		})
+	}
+	box.onmouseover=function(){
+		clearInterval(t);
+		left.style.display="block";
+		right.style.display="block";
+	}
+	box.onmouseout=function(){
+		t=setInterval(move,1500);
+		left.style.display="none";
+		right.style.display="none";
+	}
+	left.onclick=function(){
+		if(flag){
+			flag=false;
+			var first=getFirst(imgbox);
+			var last=getLast(imgbox);
+			insertBefore(last,first);
+			imgbox.style.left=-w+"px";
+			animate(imgbox,{left:0},500,function(){
+				flag=true;
+			})
+		}
+	}
+	right.onclick=function(){
+		if(flag){
+			flag=false;
+			move();
+		}
+	}
+</script>
+</html>

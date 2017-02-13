@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>snake</title>
+</head>
+<script src="../js/function.js"></script>
+<script src="snake.js"></script>
+<style>
+	#box{
+		width: 600px;
+		height: 600px;
+		border:1px solid red;
+		background: yellowgreen;
+		margin:10px auto;
+		border-radius: 10px;
+		position: relative;
+	}
+	#box div{
+		width: 20px;
+		height: 20px;
+		float: left;
+	}
+	#box .she{
+		background: #76664d;
+		border-radius: 8px;
+	}
+	#box .food{
+		border-radius: 10px;
+		background: #ed5736;
+	}
+	#fenshu{
+		position: absolute;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		top:0;
+		width: 120px;
+		height: 120px;
+		text-align: center;
+		line-height: 120px;
+		opacity: 0.5;
+		color: #fff;
+		font-size: 100px;
+		margin:auto;
+	}
+	.defen{
+		color: #333;
+		position: absolute;
+		width: 100%;
+		font-size: 30px;
+		display: none;
+		text-align: center;
+		top: 180px;
+	}
+	.gameover{
+		color: #fff;
+		position: absolute;
+		width: 100%;
+		font-size: 100px;
+		display: none;
+		text-align: center;
+	}
+</style>
+<body>
+	<div id="box">
+		<p class="gameover">game over</p>
+		<p class="defen">您的得分</p>
+		<span id="fenshu">0</span>
+	</div>
+</body>
+<script>
+	var box=$("#box");
+	var fun=new Function(box);
+	fun.play();
+</script>
+</html>

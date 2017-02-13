@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>放大</title>
+</head>
+<script src="../js/function.js"></script>
+<script src="../js/animate.js"></script>
+<style>
+	.box{
+		width: 800px;
+		height: 1200px;
+		margin: 0 auto;
+		text-align: center;
+		line-height: 1200px;
+		position: relative;
+		border:1px solid #000;
+	}
+	.box div{
+		position: absolute;
+		left: 45%;
+		font-size: 50px;
+		color: #333;
+	}
+	.box img{
+		vertical-align: middle;
+	}
+</style>
+<body>
+	<div class="box"><div></div><img src="1.jpg" alt=""></div>
+</body>
+<script>
+	var box=$("div",$(".box")[0])[0];
+	var imgs=$("img")[0];
+	var ow=imgs.offsetWidth;
+	var oh=imgs.offsetHeight;
+	var	w=ow;
+	mouseWheel(document,
+	function(){
+		w+=20;
+		if(w>=(ow*2)){w=(ow*2)};
+		box.innerText=parseInt((w/ow)*100)+"%";
+		imgs.style.width=w+"px";
+	},function(){
+		w-=20;
+		if(w<=(ow/4)){w=(ow/4)};
+		box.innerText=parseInt((w/ow)*100)+"%";
+		imgs.style.width=w+"px";
+	})
+</script>
+</html>

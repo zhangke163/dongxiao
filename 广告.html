@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<script src="js/function.js"></script>
+<script src="js/animate.js"></script>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		position: fixed;
+		left: 0;
+		top: 0;
+		border-radius: 7px;
+		background: yellowgreen;
+	}
+	.xbox{
+		width: 15px;
+		height: 15px;
+		float: right;
+		margin-right: 5px;
+		margin-top: 5px;
+		cursor: pointer;
+		border-radius: 50%;
+		background: #fff;
+		text-align: center;
+		line-height: 15px;
+		font-size: 12px;
+		color: yellowgreen;
+		transition:all 0.5s;
+	}
+	.xbox:hover{
+		background: #666;
+		color: #fff;
+	}
+</style>
+<body>
+	<div class="box">
+		<div class="xbox">X</div>
+	</div>
+</body>
+<script>
+	var box=$('.box')[0];
+	var xbox=$('.xbox')[0];
+	var t=setInterval(move,10);
+	var a=1;
+	var b=1;
+	var bw=box.offsetWidth;
+	var bh=box.offsetHeight;
+	function move(){
+	var w=document.documentElement.clientWidth;
+	var h=document.documentElement.clientHeight;
+		var left=box.offsetLeft;
+		var top=box.offsetTop;
+		left=left+a;
+		top=top+b;
+		if(left>(w-bw)){
+			left=(w-bw);
+			a*=-1;
+		}
+		if(top>(h-bh)){
+			top=(h-bh);
+			b*=-1;
+		}
+		if(left<0){
+			left=0;
+			a*=-1;
+		}
+		if(top<0){
+			top=0;
+			b*=-1;
+		}
+		box.style.left=left+"px";
+		box.style.top=top+"px";
+	}
+	box.onmouseover=function(){
+		clearInterval(t);
+	}
+	box.onmouseout=function(){
+		t=setInterval(move,10);
+	}
+	xbox.onclick=function(){
+		box.style.display="none";
+	}
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<style>
+	.box{
+		width: 200px;
+		height: 200px;
+		position: fixed;
+		left: 0;
+		top: 0;
+		background: yellowgreen;
+	}
+</style>
+<body>
+	<div class="box"></div>
+</body>
+<script>
+	var box=$(".box")[0];
+	var cw=document.documentElement.clientWidth;
+	var ch=document.documentElement.clientHeight;
+	var ow=box.offsetWidth;
+	var oh=box.offsetHeight;
+	window.onresize=function(){
+		cw=document.documentElement.clientWidth;
+		ch=document.documentElement.clientHeight;
+		var ol=box.offsetLeft;
+		var ot=box.offsetTop;
+		if(ol>cw-ow){box.style.left=(cw-ow)+"px";};
+		if(ot>ch-oh){box.style.top=(ch-oh)+"px";};
+	}
+	box.onmousedown=function(e){
+		var e=e||window.event;
+		var ox=e.offsetX;
+		var oy=e.offsetY;
+		document.onmousemove=function(e){
+			var e=e||window.event;
+			var cx=e.clientX;
+			var cy=e.clientY;
+			var x=cx-ox;
+			var y=cy-oy;
+			if(x<0){x=0;};
+			if(y<0){y=0;};
+			if(x>cw-ow){x=cw-ow};
+			if(y>ch-oh){y=ch-oh};
+			box.style.left=x+"px";
+			box.style.top=y+"px";
+		}
+		document.onmouseup=function(){
+			document.onmousemove=null;
+			document.onmouseup=null;
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="" name="biaodan">
+		<input type="text" value="请输入账号" name="username"><br>
+		<input type="text" name="userps"><br>
+		<input type="submit" name="denglu" value="登录"><br>
+		单价：<input type="text" value="29.5" name="danjia">
+		数量：<input type="button" value="-" name="jian"><input type="text" value="1" name="shuliang" size="4"><input type="button" value="+" name="jia">
+		总价：<input type="text" value="0" name="zongjia"><br>
+
+		1&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		2&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		3&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		4&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		5&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		6&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		7&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		8&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		9&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		10&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		11&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		12&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		13&nbsp;<input type="checkbox" name="duoxuan" value="1"><br>
+		全选：&nbsp;<input type="checkbox" name="quanxuan" value="1">&nbsp;&nbsp;&nbsp;
+		全不选：&nbsp;<input type="checkbox" name="quanbuxuan" value="1">&nbsp;&nbsp;&nbsp;
+		反选：&nbsp;<input type="checkbox" name="fanxuan" value="1">
+	</form>
+</body>
+<script>
+	var forms=document.biaodan;
+	// var names=forms.username;
+	// var password=forms.userps;
+	// names.onfocus=function(){
+	// 	if(names.value=="请输入账号"){
+	// 		names.value="李凯";
+	// 		names.select();
+	// 	}
+	// };
+	// names.onblur=function(){
+	// 	if(names.value==""){
+	// 		names.value="请输入账号";
+	// 	}
+	// }
+	// names.onchange=function(){
+	// 	alert("您的格式不对，请重新输入");
+	// 	name.value="";
+	// }
+
+
+	var danjia=forms.danjia;
+	var shuliang=forms.shuliang;
+	var zongjia=forms.zongjia;
+	var jia=forms.jia;
+	var jian=forms.jian;
+	danjia.disabled=true;
+	zongjia.disabled=true;
+	zongjia.value=shuliang.value*danjia.value;
+	jian.onclick=function(){
+		if(parseInt(shuliang.value)>0){
+			shuliang.value=shuliang.value-1;
+			zongjia.value=shuliang.value*danjia.value;
+		}
+	}
+	jia.onclick=function(){
+			shuliang.value=parseInt(shuliang.value)+1;
+			zongjia.value=shuliang.value*danjia.value;
+		}
+
+
+
+	var duoxuan=forms.duoxuan;
+	var quanxuan=forms.quanxuan;
+	var quanbuxuan=forms.quanbuxuan;
+	var fanxuan=forms.fanxuan;
+	quanxuan.onclick=function(){
+		if(quanxuan.checked){
+			for (var i = 0; i < duoxuan.length; i++) {
+			duoxuan[i].checked="true";
+			};
+		}else{
+			for (var i = 0; i < duoxuan.length; i++) {
+			duoxuan[i].checked=false;
+			};
+		}
+		quanbuxuan.checked=false;
+		fanxuan.checked=false;
+	}
+	quanbuxuan.onclick=function(){
+		for (var i = 0; i < duoxuan.length; i++) {
+			duoxuan[i].checked=false;
+			};
+		quanxuan.checked=false;
+		fanxuan.checked=false;
+	}
+	fanxuan.onclick=function(){
+		for (var i = 0; i < duoxuan.length; i++) {
+			if(duoxuan[i].checked)
+			duoxuan[i].checked=false;
+		else
+			duoxuan[i].checked=true;
+		};
+		quanxuan.checked=false;
+		quanbuxuan.checked=false;
+	}
+</script>
+</html>

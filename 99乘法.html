@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>demo</title>
+</head>
+<body>
+	<script>
+	for(var i=1;i<10;i++)
+	{
+		for(var k=9;k>=i;k--)
+		{
+			document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+		};
+		for(var j=1;j<=i;j++)
+		{
+			document.write(j+"*"+i+"="+(i*j)+"&nbsp;&nbsp;&nbsp;");
+			if((j==2&&i==3)||(j==2&&i==4))
+				document.write("&nbsp;&nbsp;");
+		};
+			document.write("<br/>");
+	};
+
+
+
+	// for(var i=9;i>=1;i--)
+	// {
+	// 	for(var j=1;j<=i;j++)
+	// 	{
+	// 		document.write(j+"*"+i+"="+(i*j)+"&nbsp;&nbsp;&nbsp;");
+	// 		// if((j==2&&i==3)||(j==2&&i==4))
+	// 		// 	document.write("&nbsp;&nbsp;");
+	// 	};
+	// 		document.write("<br/>");
+	// };
+
+
+	for(var i=9;i>=1;i--)
+	{
+		for(var j=1;j<=i;j++)
+		{
+			document.write("&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+			// if((j==2&&i==3)||(j==2&&i==4))
+			// 	document.write("&nbsp;&nbsp;");
+		};
+		for(var k=9;k>=i;k--)
+		{
+			document.write(k+"*"+i+"="+(i*k)+"&nbsp;&nbsp;&nbsp;&nbsp;");
+			if((i*j)<10)
+				document.write("&nbsp;");
+			if(i==1)
+				document.write("&nbsp;");
+		}
+			document.write("<br/>");
+	};
+
+
+
+
+	// document.write("<table border='1px'>");
+	// for(var a=1;a<=5;a++)
+	// {
+	// 	document.write("<tr>");
+	// 	for(var b=1;b<=5;b++)
+	// 	{
+	// 		if(a%2==0&&b%2==0)
+	// 			var color="red";
+	// 		else if(b%2==1&&a%2==1)
+	// 			color="yellow";
+	// 		else
+	// 			color="";
+	// 		document.write("<td bgcolor="+color+">");
+	// 			document.write("111</td>");
+	// 	};
+	// 	document.write("</tr>");
+	// };
+	// document.write("</table>");
+	// var x=1;
+	// x*=10;
+	// while(x<=50)
+	// {
+	// 	document.write(x/10);
+	// 	x+=1;
+	// }
+	/// 	var num1=parseInt(prompt("请输入一个数：",""));
+// 	var num2=parseInt(prompt("请输入另一个数：",""));
+// 	if(!num1&&!num2)
+// 		{
+// 			alert("亲，您输入的不是数字哦！");
+// 		}
+// 	else
+// 	{
+// 	var fuhao=prompt("请输入一个符号：","");
+// 	switch(fuhao)
+// 	{
+// 		case "+":alert("和为:"+(num1+num2));
+// 		break;
+// 		case "-":alert("差为:"+(num1-num2));
+// 		break;
+// 		case "*":alert("乘积为:"+(num1*num2));
+// 		break;
+// 		case "/":alert("商为:"+(num1/num2));
+// 		break;
+// 		default:alert("对不起！输入无效");
+// 	}
+// };
+// 分数
+		// var grade=prompt("你的分数为:","");
+		// if (grade==100) {
+		// 	alert("满分");
+		// }
+		// else if(grade<100&&grade>=90)
+		// 	{
+		// 		alert("优秀");
+		// 	}
+		// 	else if(grade<90&&grade>=80)
+		// 		{
+		// 			alert("良好");
+		// 		}
+		// 		else if(grade<80&&grade>=70)
+		// 			{
+		// 				alert("中等");
+		// 			}
+		// 			else if(grade<70&&grade>=60)
+		// 				{
+		// 					alert("合格");
+		// 				}
+		// 				else if(grade<60&&grade>=0)
+		// 					{
+		// 						alert("补考")
+		// 					}
+		// 					else
+		// 						{
+		// 							alert("成绩无效！");
+		// 						};
+		// 账号密码
+		// var name="likai";
+		// var mima=2;
+		// var username=prompt("账号：","");
+		// var mimakuang=prompt("密码：","");
+		// var denglu=username+mimakuang;
+		// if (username==name||mimakuang==mima) 
+		// 	{
+		// 		alert("登录成功");
+		// 	}
+		// else if(username==""&&mimakuang=="")
+		// 	{
+		// 		alert("账号或密码为空！");
+		// 	}
+		// else
+		// 	{
+		// 		alert("登录失败");
+		// 	};
+	</script>
+</body>
+</html>

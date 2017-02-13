@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<script src="js/animate.js"></script>
+<style>
+	.top{
+		width: 100%;
+		height: 800px;
+		background: pink;
+	}
+	.bottom{
+		width: 100%;
+		height: 500px;
+		background: #000;
+		opacity: 0.5;
+	}
+	.img{
+		width: 100%;
+		margin:0 auto;
+	}
+	.img li{
+		width: 100%;
+		height: 600px;
+		background: #ccc;
+		text-align: center;
+		line-height: 600px;
+		font-size: 250px;
+		color: #666;
+		cursor: pointer;
+		transition:all 0.8s;
+	}
+	.img li:hover{
+		color: yellowgreen;
+		font-size: 300px;
+		background: #333;
+	}
+	.btn{
+		width: 50px;
+		height: 500px;
+		position: fixed;
+		left: 30px;
+		top: 80px;
+		z-index: 10;
+		display: none;
+	}
+	.btn li{
+		width: 50px;
+		height: 50px;
+		line-height: 50px;
+		text-align: center;
+		cursor: pointer;
+		transition:all 0.5s;
+		font-size: 20px;
+		color: #333;
+		background: orange;
+		margin-bottom: 5px;
+	}
+	.btn li:hover{
+		color: #fff;
+		background: #333;
+	}
+</style>
+<body>
+	<div class="top"></div>
+	<div class="center">
+		<ul class="img">
+			<li>one</li>
+			<li>two</li>
+			<li>three</li>
+			<li>four</li>
+			<li>five</li>
+			<li>six</li>
+			<li>seven</li>
+			<li>eight</li>
+			<li>nine</li>
+			<li>ten</li>
+		</ul>
+		<ul class="btn">
+			<li>1</li>
+			<li>2</li>
+			<li>3</li>
+			<li>4</li>
+			<li>5</li>
+			<li>6</li>
+			<li>7</li>
+			<li>8</li>
+			<li>9</li>
+			<li>10</li>
+		</ul>
+	</div>
+	<div class="bottom"></div>
+</body>
+<script>
+var tops=$(".top")[0];
+var bottom=$(".bottom")[0];
+var btnbox=$(".btn")[0];
+var btn=$("li",btnbox);
+var img=$("li",$(".img")[0]);
+var a=600;
+var num=0;
+var flag=true;
+window.onscroll=function(){
+	var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+	var scroll=obj.scrollTop;
+	var kaishi=tops.offsetHeight-document.documentElement.clientHeight+200;
+	if(scroll>kaishi){
+		btnbox.style.display="block";
+	}
+	if(scroll<kaishi){
+		btnbox.style.display="none";
+	}
+	if(flag){
+		for (var i = 0; i < img.length; i++) {
+			if(img[i].offsetTop-document.documentElement.clientHeight+200<scroll){
+				for (var j = 0; j < btn.length; j++) {
+					btn[j].style.color="#333";
+					btn[j].style.background="orange";
+				};
+				num=i;
+				btn[i].style.color="#fff";
+				btn[i].style.background="#333";
+			}
+		}
+	}
+}
+for (var i = 0; i < btn.length; i++) {
+	btn[i].aa=i;
+	btn[i].onclick=function(){
+		flag=false;
+		var obj=document.documentElement.scrollTop?document.documentElement:document.body;
+		animate(obj,{scrollTop:img[this.aa].offsetTop},500,function(){
+			flag=true;
+		})
+		for (var j = 0; j < btn.length; j++) {
+				btn[j].style.color="#333";
+				btn[j].style.background="orange";
+			};
+		btn[this.aa].style.color="#fff";
+		num=this.aa;
+		btn[this.aa].style.background="#333";
+	}
+	btn[i].onmouseover=function(){
+		btn[this.aa].style.color="#fff";
+		btn[this.aa].style.background="#333";
+	}
+	btn[i].onmouseout=function(){
+		if(this.aa!=num){
+			btn[this.aa].style.color="#333";
+			btn[this.aa].style.background="orange";
+		}
+	}
+};
+</script>
+</html>

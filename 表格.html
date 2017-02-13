@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<script src="js/animate.js"></script>
+</head>
+<style>
+	table{
+		margin:50px auto;
+		border:1px solid red;
+	}
+	caption{
+		font-size: 20px;
+		font-weight: bold;
+		height: 50px;
+		line-height: 50px;
+	}
+	th{
+		width: 200px;
+		height: 40px;
+		cursor: pointer;
+		border:1px solid red;
+	}
+	td{
+		width: 200px;
+		height: 30px;
+		text-align: center;
+		border:1px solid red;
+	}
+	#add{
+		cursor: pointer;
+		transition:all 0.3s;
+	}
+	#add:hover{
+		font-size: 24px;
+		color: yellowgreen;
+	}
+	.del{
+		cursor: pointer;
+		transition:all 0.5s;
+	}
+	.del:hover{
+		color: red;
+	}
+</style>
+<body>
+	<table>
+		<caption>学生表</caption>
+		<tr>
+			<th>学号</th>
+			<th>姓名</th>
+			<th>性别</th>
+			<th>年龄</th>
+			<th id="add">添加</th>
+		</tr>
+		<tr>
+			<td>001</td>
+			<td>霍博洋</td>
+			<td>男</td>
+			<td>58</td>
+			<td class="del">删除</td>
+		</tr>
+		<tr>
+			<td>002</td>
+			<td>刘俊杰</td>
+			<td>男</td>
+			<td>59</td>
+			<td class="del">删除</td>
+		</tr>
+		<tr>
+			<td>003</td>
+			<td>张可</td>
+			<td>女</td>
+			<td>67</td>
+			<td class="del">删除</td>
+		</tr>
+		<tr>
+			<td>004</td>
+			<td>台乾清</td>
+			<td>女</td>
+			<td>6</td>
+			<td class="del">删除</td>
+		</tr>
+	</table>
+</body>
+<script>
+	var tab=$("tbody")[0];
+	var del=$(".del");
+	var add=$("#add");
+	tab.onclick=function(e){
+		var e=e||window.event;
+		var obj=e.target||e.srcElement;
+		if(obj.className=="del"){
+			var queding=window.confirm("确定要删除吗？");
+			if(queding)
+				tab.removeChild(obj.parentNode);
+		}else if(obj.nodeName=="TD"&&obj.className==""){
+			var input=$("<input>");
+			var te=obj.innerHTML;
+			obj.innerHTML="";
+			input.style.border=0;
+			obj.appendChild(input);
+			input.focus();
+			input.value=te;
+		input.onblur=function(){
+			if(input.value=="")
+				obj.innerHTML=te;
+			else
+				obj.innerHTML=input.value;
+		}
+		}
+	}
+	add.onclick=function(){
+		var tr=$("<tr>");
+		for (var i = 0; i < 5; i++) {
+			var td=$("<td>");
+			tr.appendChild(td);
+			if(i==4)
+				td.innerHTML="<td class='del'>删除</td>";
+		};
+		tab.appendChild(tr);
+	};
+
+</script>
+</html>

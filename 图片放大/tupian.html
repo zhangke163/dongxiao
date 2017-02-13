@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>tupian</title>
+<link rel="stylesheet" href="../css/public.css">
+<script src="../js/function.js"></script>
+<script src="../js/animate.js"></script>
+</head>
+<style>
+	.dbox{
+		width: 600px;
+		height: 400px;
+		float: left;
+		margin: 10px;
+		overflow: hidden;
+		border-radius: 10px;
+		position: relative;
+	}
+	.top{
+		position: absolute;
+		left: 0;
+		top: 0;
+		border-radius: 10px;
+		width: 100%;
+		height: 100%;
+		background: transparent;
+		z-index: 1000;
+	}
+	.zhao{
+		width: 150px;
+		height: 100px;
+		position: absolute;
+		left: 0;
+		border-radius: 10px;
+		top:0;
+		display: none;
+		background: rgba(0,0,0,0.5);
+	}
+	.dbox>img{
+		width: 600px;
+	}
+	.xbox{
+		width: 600px;
+		height: 400px;
+		float: left;
+		margin: 10px;
+		border-radius: 10px;
+		display: none;
+		overflow: hidden;
+	}
+	.xbox>img{
+		width: 2400px;
+	}
+</style>
+<body>
+	<div class="dbox">
+		<div class="top"></div>
+		<div class="zhao"></div>
+		<img src="1.jpg" alt="">
+	</div>
+	<div class="xbox">
+		<img src="1.jpg" id="imgs" alt="">
+	</div>
+</body>
+<script>
+	var dbox=$(".dbox")[0];
+	var xbox=$(".xbox")[0];
+	var zhao=$(".zhao")[0];
+	var imgs=$("#imgs");
+	var bili=parseInt(getStyle(xbox,"width"))/parseInt(getStyle(zhao,"width"));
+	hover(dbox,function(){
+		zhao.style.display="block";
+		xbox.style.display="block";
+	},function(){
+		zhao.style.display="none";
+		xbox.style.display="none";
+	});
+	dbox.onmousemove=function(e){
+		var e=e||window.event;
+		var left=e.offsetX-zhao.offsetWidth/2;
+		var top=e.offsetY-zhao.offsetHeight/2;
+		if(left<0){left=0};
+		if(top<0){top=0};
+		if(left>dbox.offsetWidth-zhao.offsetWidth){left=dbox.offsetWidth-zhao.offsetWidth};
+		if(top>dbox.offsetHeight-zhao.offsetHeight){top=dbox.offsetHeight-zhao.offsetHeight};
+		zhao.style.left=left+"px";
+		zhao.style.top=top+"px";
+		imgs.style.marginLeft=-left*bili+"px";
+		imgs.style.marginTop=-top*bili+"px";
+	}
+</script>
+</html>

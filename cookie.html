@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+<link rel="stylesheet" href="css/public.css">
+<script src="js/function.js"></script>
+<script src="js/animate.js"></script>
+</head>
+<style>
+	form{
+		width: 250px;
+		height: 200px;
+		padding: 50px;
+		margin: 50px auto;
+		background: url(3.jpg);
+		border-radius: 10px;
+		color: #333;
+		font: 18px;
+		background-size:400px  400px;
+	}
+	#zhanghao,#pass{
+		margin:10px;
+		padding-left:5px ;
+		width: 170px;
+	}
+	#denglu{
+		width:100px;
+		height: 30px;
+		color: #333;
+		background: yellowgreen;
+		border:0;
+		margin:20px 75px;
+	}
+</style>
+<body>
+	<form action="" name="my">
+		账号：<input type="text" name="zhanghao" id="zhanghao"/><br />
+		密码：<input type="password" name="pass" id="pass"/><br />
+		<input type="checkbox" name="cook" />一分钟内记住密码<br />
+		<input type="submit" name="" id="denglu" value="登录" />
+	</form>
+</body>
+<script type="text/javascript">
+	var my=document.forms.my;
+	var zhanghao=my.zhanghao;
+	var mima=my.pass;
+	var cook=my.cook;
+	var zhang=getCookie("zhanghao");
+	var mi=getCookie("mima");
+	if(zhang&&mi){
+		zhanghao.value=zhang;
+		mima.value=mi;
+	}
+	my.onsubmit=function(){
+		if(zhanghao.value=="likai"&&mima.value=="123"){
+			if(cook.checked){
+				setCookie("zhanghao","likai",60);
+				setCookie("mima","123",60);
+			}
+			alert("登录成功！");
+		}else{
+			alert("请输入正确的账户和密码！");
+			my.reset();
+		}
+	}
+</script>
+</html>

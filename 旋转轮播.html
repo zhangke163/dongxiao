@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>滑动</title>
+	<link rel="stylesheet" href="css/public.css">
+	<script src="js/function.js"></script>
+	<script src="js/animate.js"></script>
+</head>
+<style>
+	.dbox{
+		width: 800px;
+		height: 600px;
+		margin: 0 auto;
+		position: relative;
+		border:1px solid red;
+	}
+	.xbox{
+		position: absolute;
+		width: 200px;
+		height: 200px;
+		transition:all 1s;
+	}
+	.bt{
+		width: 50px;
+		height: 100px;
+		background: #666;
+		position: absolute;
+		top: 40%;
+		left: 0;
+	}
+</style>
+<body>
+	<div class="dbox">
+		<div class="xbox" style="background:red;width:300px;height:300px;left:250px;top:300px;z-index:2"></div>
+		<div class="xbox" style="background:blue;left:500px;top:280px;opacity: 0.8;"></div>
+		<div class="xbox" style="background:green;width:100px;height:100px;left:350px;top:250px;opacity: 0.5;"></div>
+		<div class="xbox" style="background:yellowgreen;left:100px;top:280px;opacity: 0.8;"></div>
+		<div class="bt"></div>
+		<div class="bt" style="left:750px;"></div>
+	</div>
+	
+</body>
+</html>
+<script>
+	
+
+var bt=$(".bt");
+var xbox=$(".xbox");
+var tu1=0;
+var tu2=1;
+var tu3=2;
+var tu4=3;
+function zhuan(){
+	animate(xbox[tu1],{width:200,height:200,left:500,top:280,opacity:0.8,},200)
+	animate(xbox[tu2],{width:100,height:100,left:350,top:250,opacity:0.5,},200)
+	animate(xbox[tu3],{width:200,height:200,left:100,top:280,opacity:0.8,},200)
+	animate(xbox[tu4],{width:300,height:300,left:250,top:300,opacity:1,},200)
+	xbox[tu1].style.zIndex="1";
+	xbox[tu4].style.zIndex="2";
+	tu1--;
+	tu2--;
+	tu3--;
+	tu4--;
+	if(tu1<0){
+		tu1=3;
+	}
+	if(tu2<0){
+		tu2=3;
+	}
+	if(tu3<0){
+		tu3=3;
+	}
+	if(tu4<0){
+		tu4=3;
+	}
+}
+var t=setInterval(zhuan,3000);
+</script>

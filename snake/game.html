@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Snake</title>
+	<style type="text/css" media="screen">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		html ,body{
+			height: 100%;
+			width: 100%;
+		}
+		canvas{
+			position: absolute;
+		}
+	</style>
+	<script type="text/javascript" src="js/snake.js"></script>
+	<script type="text/javascript" src="js/food.js"></script>
+	<script type="text/javascript" src="js/operation.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var USER_DIRC = Dirc.DOWN;
+		document.addEventListener("keyup" , function(event){
+			event = event || window.event;
+			USER_DIRC = event.keyCode;
+		});
+	</script>
+</head>
+<body>
+	<canvas id="yard" width="840" height="640" style="background: #33ef33;margin-left: 300px;"></canvas>
+	<canvas id="snake" width="840" height="640" style="margin-left: 300px;"></canvas>
+	<script type="text/javascript" charset="utf-8">
+		var yard = document.getElementById("yard");
+		var yardCxt = yard.getContext("2d");
+		var cols = 80;
+		var rows = 60;
+		var cellSize = 10;
+		//画出横线
+		yardCxt.strokeStyle="#979797";
+		yardCxt.lineWidth=1;
+		for(var i=0 ; i<= rows ; i++){
+			yardCxt.beginPath();
+			yardCxt.moveTo(20 , 20+cellSize*i);
+			yardCxt.lineTo(820 , 20+cellSize*i);
+			yardCxt.stroke();
+		}
+		//画出竖线
+		for(var i=0 ; i<= cols ; i++){
+			yardCxt.beginPath();
+			yardCxt.moveTo(20+cellSize*i , 20);
+			yardCxt.lineTo(20+cellSize*i , 620);
+			yardCxt.stroke();
+		}
+
+		var snakeContext = document.getElementById("snake").getContext("2d");
+		var FOOD_COUNT = 50;
+		var foods = [];
+		for(var i=0 ; i < FOOD_COUNT ; i ++){
+			var fRow = Math.floor(Math.random()*60);
+			var fCol = Math.floor(Math.random()*80);
+			var food = new Food(fRow , fCol);
+			foods.push(food);
+		}
+
+		var snake = new Snake(new Node(10 , 7, 9, Dirc.RIGHT));
+		snake.init(5);
+		snake.draw(snakeContext);
+		var animateInterval = setInterval(function(){
+			//如果食物已经吃完，游戏结束
+			if(foods.length === 0){
+			   snakeContext.font="40px Verdana";
+			   snakeContext.fillText("YOU WIN" , 300 , 300);
+			   clearInterval(animateInterval);
+			   return;
+			};
+
+			snake.move(getNextCmd(snake , foods));
+			if(snake.head.col < 0 || snake.head.col > 79 
+				|| snake.head.row < 0 || snake.head.row > 59 || snake.hitSelf()){
+				snakeContext.font="40px Verdana";
+				snakeContext.fillText("GAME OVER" , 300 , 300);
+				clearInterval(animateInterval);
+			}else{
+				snakeContext.clearRect(0 , 0 , 840 , 640);
+				for(var i= 0; i < foods.length; i++){
+					if(snake.head.row === foods[i].row && snake.head.col === foods[i].col){
+						foods.splice(i , 1);
+						if(foods.length > 0){
+							snake.eat(getNextCmd(snake , foods));
+						}
+					}else{
+						foods[i].draw(snakeContext);
+					}
+				}
+				snake.draw(snakeContext);
+			}
+		},50);
+	</script>
+</body>
+</html>
