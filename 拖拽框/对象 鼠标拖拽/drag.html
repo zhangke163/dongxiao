@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>对象 鼠标拖拽</title>
+	<script src="function.js"></script>
+    <script src="animate.js"></script>
+    <script src="drag.js"></script>
+
+</head>
+<style>
+.box{
+	width: 200px;
+	height: 200px;
+	background: yellow;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	/*right: 0;
+	bottom: 0;
+	margin: auto;*/
+}
+.box a{
+	color: blue;
+	text-decoration: none;
+}
+
+
+.box2{
+	width: 200px;
+	height: 200px;
+	background: yellow;
+	position: absolute;
+	right: 300px;
+	top: 0px;
+	/*right: 0;
+	bottom: 0;
+	margin: auto;*/
+}
+.box2 a{
+	color: blue;
+	text-decoration: none;
+}
+.boxfather{
+	width: 800px;
+	height: 900px;
+	background: green;
+	position: relative;
+	left: 300px;
+}
+
+</style>
+
+
+
+
+<body>
+<div class="box"><a href="#">第一种方法 基于函数 阿里里路亚 第一种方法 基于函数 第一种方法 基于函数</a>
+<img src="images/1.12.png" alt="">
+</div>
+
+
+<div class="boxfather">
+<div class="box2"><a href="#">第二种方法 就不告诉你 第二种方法 就不告诉你 第二种方法 就不告诉你 第二种方法 </a>
+<img src="images/1.12.png" alt="">
+</div>
+</div>
+
+
+	
+</body>
+<script>
+// 第一种方法的盒子 以函数方式	
+// var box=$(".box")[0];
+// darg(box);
+
+
+
+
+// 第二种方法 以对象的方式写拖拽
+var box2=$(".box2")[0];
+var boxfather=$(".boxfather")[0];
+//实例化
+var obj=new drag2(box2,boxfather,{});
+obj.drags();
+
+
+
+
+
+
+
+</script>
+</html>
